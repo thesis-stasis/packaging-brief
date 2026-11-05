@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Retail Format Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an agency format guide. A channel-by-substrate lineup first, then one capability sheet per format as a horizontal strip: unit photo, the brief, what the format can do, what is locked vs yours. */
+:root{
+  --bg:#F4F5F2;
+  --paper:#FFFFFF;
+  --ink:#1A1D1B;
+  --ink-2:#5A605C;
+  --line:#D9DDD8;
+  --accent:#1F4FC4;
+  --accent-soft:#E3E9FA;
+  --lock:#6B7270;
+  --lock-soft:#E8EAE8;
+  --yours:#1E6B3A;
+  --yours-soft:#DDF0E3;
+  --gummy:#C2411F;
+  --gummy-soft:#FBE4DC;
+  --display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15181A; --paper:#1E2224; --ink:#ECEEEA; --ink-2:#A3AAA6; --line:#343A3C;
+    --accent:#8AA6F2; --accent-soft:#25304A;
+    --lock:#A8AFAC; --lock-soft:#2C3133;
+    --yours:#7FD39A; --yours-soft:#1D3626;
+    --gummy:#F09A80; --gummy-soft:#432219;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15181A; --paper:#1E2224; --ink:#ECEEEA; --ink-2:#A3AAA6; --line:#343A3C;
+  --accent:#8AA6F2; --accent-soft:#25304A;
+  --lock:#A8AFAC; --lock-soft:#2C3133;
+  --yours:#7FD39A; --yours-soft:#1D3626;
+  --gummy:#F09A80; --gummy-soft:#432219;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
+  padding-block:0 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1120px;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
+h1{font-size:clamp(36px,6vw,60px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:28px;font-weight:700}
+h3{font-size:24px;font-weight:700}
+h4{font-size:15px;font-weight:600;letter-spacing:.02em}
+p{margin:0 0 10px;max-width:66ch}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid currentColor;white-space:nowrap;vertical-align:middle}
+.pill.lock{background:var(--lock-soft);color:var(--lock)}
+.pill.yours{background:var(--yours-soft);color:var(--yours)}
+.pill.dtc,.pill.retail{background:var(--accent-soft);color:var(--accent)}
+.pill.g{background:var(--gummy-soft);color:var(--gummy)}
+.n{font-family:var(--mono);font-weight:500;font-variant-numeric:tabular-nums}
+
+header{padding-block:44px 30px}
+header .meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:14px;font-family:var(--mono);font-size:13px;color:var(--ink-2)}
+.lede{margin-top:16px;font-size:18px;max-width:60ch}
+.brief{margin-top:26px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:2px solid var(--ink);border-radius:10px;overflow:hidden;background:var(--paper)}
+.brief > div{padding:18px 20px;border-right:1px solid var(--line);min-width:0}
+.brief > div:last-child{border-right:0}
+.brief .k{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.brief .v{font-family:var(--display);font-size:24px;font-weight:700;margin-top:4px;line-height:1.1}
+.brief .s{font-size:14px;color:var(--ink-2);margin-top:6px}
+
+section{padding-block:40px 0}
+.sechead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.sechead p{margin:0;color:var(--ink-2);font-size:14px}
+
+/* lineup matrix */
+.lineup{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,1fr);gap:8px}
+.lineup .hd{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);padding:0 4px 4px;align-self:end}
+.lineup .hd.big{font-family:var(--display);font-size:22px;font-weight:700;color:var(--ink);text-transform:none;letter-spacing:0}
+.lineup .rowhd{font-family:var(--display);font-size:22px;font-weight:700;padding:14px 4px;display:flex;flex-direction:column;gap:6px;justify-content:center}
+.lineup .rowhd small{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--ink-2);letter-spacing:.04em}
+.cell{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:12px;min-width:0}
+.cell .u{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:center}
+.cell .u img{width:96px;height:96px;object-fit:contain;border-radius:8px;display:block;background:#2A2D2C;max-width:100%}
+.cell .u b{display:block;font-family:var(--display);font-size:19px;line-height:1.1}
+.cell .u span{display:block;font-size:13px;color:var(--ink-2);margin-top:3px}
+.cell .u .n{font-size:14px;color:var(--ink)}
+.cell .plus{font-family:var(--mono);font-size:11px;color:var(--ink-2);letter-spacing:.08em;text-transform:uppercase;text-align:center;margin:-4px 0}
+.cell.gum{border-color:var(--gummy)}
+.cell.cap{border-color:var(--accent)}
+.lineup-note{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.lineup-note div{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:14px}
+.lineup-note b{font-family:var(--display);font-size:16px;display:block;margin-bottom:2px}
+
+/* capability sheets */
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:12px;margin-top:18px;overflow:hidden}
+.sheet .top{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);}
+.sheet .pic{background:var(--bg);padding:12px;display:grid;gap:8px;align-content:start}
+.sheet .pic img{width:100%;max-width:100%;aspect-ratio:1;object-fit:contain;border-radius:8px;display:block;background:#2A2D2C;border:1px solid var(--line)}
+.sheet .pic .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sheet .pic .row2 img{aspect-ratio:1}
+.sheet .pic svg{width:100%;max-width:100%;height:auto;aspect-ratio:1;display:block;border-radius:8px;background:var(--paper);border:1px solid var(--line)}
+.sheet .pic figcaption{font-family:var(--mono);font-size:11px;color:var(--ink-2);line-height:1.35}
+.sheet figure{margin:0}
+.sheet .txt{padding:20px 24px 22px;min-width:0}
+.sheet .num{font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.08em}
+.sheet .title{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:4px}
+.sheet .sub{color:var(--ink-2);margin:6px 0 16px;max-width:70ch}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.cols > div{min-width:0}
+.cols h4{padding-bottom:6px;border-bottom:1px solid var(--line);margin-bottom:8px;color:var(--ink-2);text-transform:uppercase;font-family:var(--mono);font-size:11px;letter-spacing:.08em;font-weight:500}
+.cols ul{margin:0;padding-left:0;list-style:none;font-size:14px}
+.cols li{padding:4px 0;display:grid;grid-template-columns:14px minmax(0,1fr);gap:8px;align-items:start}
+.cols li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ink-2);margin-top:8px}
+.cols .lockd li::before{background:var(--lock)}
+.cols .yoursd li::before{background:var(--yours)}
+.cols .lockd h4{color:var(--lock)}
+.cols .yoursd h4{color:var(--yours)}
+.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;font-size:14px;margin-bottom:14px}
+.kv dt{font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);padding-top:2px}
+.kv dd{margin:0}
+.parts{border-top:1px solid var(--line);padding:12px 24px 14px;display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;font-size:13px;background:var(--bg)}
+.parts .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-right:4px}
+.part{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 10px;font-weight:500}
+.part.ref{border-style:dashed;color:var(--ink-2);font-weight:400}
+
+/* shells */
+.shells{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:20px;align-items:start}
+.shells img{max-width:100%;border-radius:10px;border:1px solid var(--line);display:block}
+
+/* decisions */
+ul.dec{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}
+ul.dec li{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:14px}
+ul.dec li b{font-family:var(--display);font-size:17px;display:block;margin-bottom:2px}
+footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+
+@media (max-width:860px){
+  .brief{grid-template-columns:1fr}
+  .brief > div{border-right:0;border-bottom:1px solid var(--line)}
+  .brief > div:last-child{border-bottom:0}
+  .lineup{grid-template-columns:1fr}
+  .lineup .hd{display:none}
+  .lineup .rowhd{padding:18px 4px 4px}
+  .cell::before{content:attr(data-ch);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+  .sheet .top{grid-template-columns:1fr}
+  .sheet .pic{grid-template-columns:1fr 1fr;grid-auto-flow:row}
+  .sheet .pic .row2{grid-column:1/-1}
+  .cols{grid-template-columns:1fr}
+  .shells{grid-template-columns:1fr}
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.site{display:flex;flex-wrap:wrap;gap:6px 20px;padding-top:18px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.site a{color:var(--ink-2);text-decoration:none;padding-bottom:2px;border-bottom:2px solid transparent}
+.site a:hover{color:var(--ink)}
+.site a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Stasis &amp; Thesis · Packaging format guide for the agency</div>
+  <h1>Retail Format Map</h1>
+  <p class="lede">What we need designed, what each format can do, and what is already decided. Everything pictured is inspiration for the unit, never the look. Shape, colour, finish, closure and artwork are yours unless a line says locked.</p>
+  <div class="meta"><span>Owner: Molly</span><span>Updated 3 Nov 2026</span><span>v2</span></div>
+  <div class="brief">
+    <div><div class="k">Substrates</div><div class="v">Gummy · Capsule</div><div class="s">Two and only two. Every capsule product is two capsules per serving. Nothing mixes substrates.</div></div>
+    <div><div class="k">Serving sizes</div><div class="v">25 for DTC · 14 for retail</div><div class="s">Both substrates follow the same split. One exception: the blister runs at 14, 12 or 7 day depending on product, so its cavity count changes per SKU.</div></div>
+    <div><div class="k">Formats to design</div><div class="v">Five, four will ship</div><div class="s">Gummy jar, premium refillable container, refill pouch, and for retail capsules either a travel tin or a blister trifold. Both get designed so the choice is made with work in hand. Each needs a secondary pack.</div></div>
+  </div>
+</header>
+
+<section id="lineup">
+  <div class="sechead"><h2>The lineup</h2><p>Substrate down, channel across. One format per cell, except retail capsules, which is a this or that: blister or travel tin, and we still have to decide which 14 count goes to retail.</p></div>
+  <div class="lineup">
+    <div class="hd"></div>
+    <div class="hd big">DTC</div>
+    <div class="hd big">Retail</div>
+
+    <div class="rowhd">Gummy <small>Stasis Kids · Thesis Kids</small></div>
+    <div class="cell gum" data-ch="DTC">
+      <div class="u"><img src="u/jar-25.jpg" alt="Frosted plastic gummy jar with a white cap"><div><b>Gummy jar</b><span class="n">25 servings</span><span>Plastic jar. Thicker wall available.</span></div></div>
+    </div>
+    <div class="cell gum" data-ch="Retail">
+      <div class="u"><img src="u/jar-14.jpg" alt="Smaller solid white plastic gummy jar"><div><b>Gummy jar</b><span class="n">14 servings</span><span>Same format, retail size.</span></div></div>
+    </div>
+
+    <div class="rowhd">Capsule <small>Adult range · 2 per serving</small></div>
+    <div class="cell cap" data-ch="DTC">
+      <div class="u"><img src="u/aluminum.jpg" alt="Gold anodised aluminum container with lid"><div><b>Premium refillable container</b><span class="n">25 day · 50 capsules</span><span>Keep-forever vessel, any material. Ships with a refill pouch inside.</span></div></div>
+    </div>
+    <div class="cell cap" data-ch="Retail">
+      <div class="plus" style="text-align:left;margin:0;color:var(--accent)">This or that · one 14 count goes to retail · not yet decided</div>
+      <div class="u"><img src="u/blister-open.jpg" alt="Open trifold showing two blister panels of capsules"><div><b>Option A · Blister trifold</b><span class="n">14 · 12 · 7 day by product</span><span>Foil blister in a trifold + secondary pack.</span></div></div>
+      <div class="plus">or</div>
+      <div class="u"><img src="u/tin-open.jpg" alt="Small yellow travel tin open with loose capsules inside"><div><b>Option B · Travel tin</b><span class="n">14 servings · 28 capsules</span><span>Refillable. Tin + pouch + secondary pack.</span></div></div>
+    </div>
+  </div>
+  <div class="lineup-note">
+    <div><b>The pouch is the DTC refill</b>A first DTC order ships the refillable container with a pouch inside. From the second order on, the customer buys the pouch alone as a refill. A smaller version is likely to go inside the retail travel tin. It never goes on a retail shelf by itself.</div>
+    <div><b>Products are the same across every capsule format</b>Stasis Adult Day, Stasis Adult Night, Thesis Clarity, Stress Reset, Neuroprotection, Motivation, and the rest of the capsule range.</div>
+    <div><b>Adult gummies may come later</b>If they do, they take the gummy jar format at the same two serving sizes.</div>
+  </div>
+</section>
+
+<section id="formats">
+  <div class="sechead"><h2>Format capabilities</h2><p>One sheet per format. Left: the brief. Middle: what the format can physically do. Right: locked versus yours.</p></div>
+
+  <article class="sheet" id="jar">
+    <div class="top">
+      <div class="pic">
+        <figure><img src="u/jar-25.jpg" alt="Frosted plastic gummy jar, 25 serving size"><figcaption>25 serving jar, current Stasis Kids. Label and jar are inspiration only.</figcaption></figure>
+        <figure><img src="u/jar-14.jpg" alt="Smaller white plastic gummy jar"><figcaption>Unprinted sample at the smaller size.</figcaption></figure>
+      </div>
+      <div class="txt">
+        <div class="num">FORMAT 01</div>
+        <div class="title"><h3>Gummy jar</h3><span class="pill g">gummy</span><span class="pill dtc">DTC</span><span class="pill retail">Retail</span></div>
+        <p class="sub">The one gummy format. Two sizes, one for each channel.</p>
+        <div class="cols">
+          <div>
+            <h4>The brief</h4>
+            <dl class="kv">
+              <dt>Substrate</dt><dd>Gummy</dd>
+              <dt>DTC</dt><dd><span class="n">25 servings</span></dd>
+              <dt>Retail</dt><dd><span class="n">14 servings</span></dd>
+              <dt>Products</dt><dd>Stasis Kids, Thesis Kids. Adult gummies later if they come.</dd>
+            </dl>
+          </div>
+          <div>
+            <h4>Capabilities</h4>
+            <ul>
+              <li>Plastic jar, screw cap, inner seal.</li>
+              <li>A thicker walled plastic is available if the design wants more heft or opacity.</li>
+              <li>Frosted, clear or solid colour all work.</li>
+              <li>Wrap label or direct print.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="lockd"><h4>Locked</h4><ul><li>Plastic. No tin for gummies.</li><li>Two sizes, 25 and 14 servings.</li></ul></div>
+            <div class="yoursd" style="margin-top:12px"><h4>Yours</h4><ul><li>Jar shape and proportions.</li><li>Cap style and colour.</li><li>Material finish and opacity.</li><li>Label or print artwork.</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="parts"><span class="k">Pieces per unit</span><span class="part">Jar</span><span class="part">Cap</span><span class="part">Label</span></div>
+  </article>
+
+  <article class="sheet" id="container">
+    <div class="top">
+      <div class="pic">
+        <figure><img src="u/aluminum.jpg" alt="Gold aluminum container, closed"><figcaption>Reference for size and feel only. Material, shape and colour are open. It does not need to be metal.</figcaption></figure>
+        <figure><img src="u/pouch.jpg" alt="White capsule pouch with tear notch"><figcaption>Ships with a refill pouch inside. Pouch shown is a structure reference, ignore its labelling.</figcaption></figure>
+      </div>
+      <div class="txt">
+        <div class="num">FORMAT 02</div>
+        <div class="title"><h3>Premium refillable container</h3><span class="pill">capsule</span><span class="pill dtc">DTC</span></div>
+        <p class="sub">The DTC home for capsules. A keep-forever vessel the customer refills from a pouch.</p>
+        <div class="cols">
+          <div>
+            <h4>The brief</h4>
+            <dl class="kv">
+              <dt>Substrate</dt><dd>Capsules, two per serving</dd>
+              <dt>Servings</dt><dd><span class="n">25 day · 50 capsules</span></dd>
+              <dt>Channel</dt><dd>DTC only</dd>
+              <dt>Products</dt><dd>Full adult capsule range</dd>
+            </dl>
+          </div>
+          <div>
+            <h4>Capabilities</h4>
+            <ul>
+              <li>Any durable material that reads as premium. The sample is anodised aluminum; metal is not required.</li>
+              <li>Refillable. Lid comes off, pouch contents tip in.</li>
+              <li>Decoration follows the material: emboss, deboss, print or etch.</li>
+              <li>First order ships container plus pouch. Refills ship pouch only.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="lockd"><h4>Locked</h4><ul><li>25 day capacity.</li><li>Refillable from the pouch.</li><li>Reads as premium and keep-forever.</li></ul></div>
+            <div class="yoursd" style="margin-top:12px"><h4>Yours</h4><ul><li>Material. The sample is aluminum but it does not need to be metal.</li><li>Shape. The cylinder shown is not the spec.</li><li>Colour and finish.</li><li>Closure style.</li><li>Decoration method.</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="parts"><span class="k">Pieces per unit</span><span class="part">Container</span><span class="part">Refill pouch</span><span class="part ref">Shipper or gift box, if wanted</span></div>
+  </article>
+
+  <article class="sheet" id="tin">
+    <div class="top">
+      <div class="pic">
+        <figure><img src="u/tin-closed.jpg" alt="Small round yellow travel tin, closed"><figcaption>Size and form reference. Embossing is the sample maker's.</figcaption></figure>
+        <figure><img src="u/tin-open.jpg" alt="Travel tin open with loose capsules"><figcaption>Capsules sit loose in the tin.</figcaption></figure>
+        <div class="row2">
+          <figure><img src="u/pouch.jpg" alt="White capsule refill pouch with tear notch"><figcaption>Refill pouch, packed beside the tin inside the secondary. Structure reference only.</figcaption></figure>
+          <figure>
+            <svg viewBox="0 0 280 242" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flat dieline of a tuck end carton: glue flap, side, front, side and back panels, with tuck flaps top and bottom and dust flaps on the sides">
+              <rect x="0" y="0" width="280" height="242" fill="var(--paper)"/>
+              <rect x="14" y="66" width="252" height="110" fill="var(--bg)"/>
+              <g stroke="var(--ink-2)" stroke-width="0.8" stroke-dasharray="3 2" fill="none">
+                <line x1="26" y1="66" x2="26" y2="176"/>
+                <line x1="66" y1="30" x2="66" y2="212"/>
+                <line x1="146" y1="30" x2="146" y2="212"/>
+                <line x1="186" y1="30" x2="186" y2="212"/>
+                <line x1="26" y1="66" x2="266" y2="66"/>
+                <line x1="26" y1="176" x2="266" y2="176"/>
+                <line x1="70" y1="26" x2="142" y2="26"/>
+                <line x1="190" y1="26" x2="262" y2="26"/>
+                <line x1="70" y1="216" x2="142" y2="216"/>
+                <line x1="190" y1="216" x2="262" y2="216"/>
+              </g>
+              <path d="M14,66 L26,66 L26,30 L66,30 L66,26 L70,26 Q70,14 82,14 L130,14 Q142,14 142,26 L146,26 L146,30 L186,30 L186,26 L190,26 Q190,14 202,14 L250,14 Q262,14 262,26 L266,26 L266,216 L262,216 Q262,228 250,228 L202,228 Q190,228 190,216 L186,216 L186,212 L146,212 L146,216 L142,216 Q142,228 130,228 L82,228 Q70,228 70,216 L66,216 L66,212 L26,212 L26,176 L14,176 Z" fill="none" stroke="var(--ink)" stroke-width="1.2" stroke-linejoin="round"/>
+              <circle cx="106" cy="124" r="22" fill="none" stroke="var(--ink-2)" stroke-width="0.8" stroke-dasharray="2 2"/>
+              <g font-family="IBM Plex Mono, ui-monospace, monospace" font-size="7" fill="var(--ink-2)" text-anchor="middle" letter-spacing="0.5">
+                <text x="106" y="82">FRONT</text>
+                <text x="106" y="122">TIN</text>
+                <text x="106" y="130">IMAGE</text>
+                <text x="106" y="164" font-size="5.5">shows what is inside</text>
+                <text x="226" y="124">BACK</text>
+                <text x="46" y="124">SIDE</text>
+                <text x="166" y="124">SIDE</text>
+                <text transform="translate(21,128) rotate(-90)">GLUE</text>
+                <text x="106" y="48">TOP TUCK</text>
+                <text x="226" y="48">TOP TUCK</text>
+                <text x="46" y="50">DUST</text>
+                <text x="166" y="50">DUST</text>
+                <text x="106" y="198">BOTTOM TUCK</text>
+                <text x="226" y="198">BOTTOM TUCK</text>
+                <text x="46" y="196">DUST</text>
+                <text x="166" y="196">DUST</text>
+              </g>
+              <text x="140" y="238" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="6.5" fill="var(--ink-2)" text-anchor="middle">solid = cut · dashed = fold · not to scale</text>
+            </svg>
+            <figcaption>Secondary pack, schematic dieline. A tuck end carton holding the tin and the pouch. The front carries an image of the tin. Structure, proportions and artwork are yours.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="txt">
+        <div class="num">FORMAT 03</div>
+        <div class="title"><h3>Travel tin</h3><span class="pill">capsule</span><span class="pill retail">Retail</span></div>
+        <p class="sub">Retail option B. We are choosing between this and the blister trifold, and only one will ship. Three pieces: the tin, a refill pouch, and a secondary pack that holds both and carries the shelf face.</p>
+        <div class="cols">
+          <div>
+            <h4>The brief</h4>
+            <dl class="kv">
+              <dt>Substrate</dt><dd>Capsules, two per serving</dd>
+              <dt>Servings</dt><dd><span class="n">14 · 28 capsules</span></dd>
+              <dt>Channel</dt><dd>Retail only</dd>
+              <dt>Products</dt><dd>Full adult capsule range</dd>
+            </dl>
+          </div>
+          <div>
+            <h4>Capabilities</h4>
+            <ul>
+              <li>Metal tin, push or screw lid.</li>
+              <li>Holds loose capsules. No inner liner or tray.</li>
+              <li>Coloured coating, print or emboss on lid and body.</li>
+              <li>Needs a secondary pack to carry retail copy, barcode and the pouch. The box hides the tin, so the box has to show it.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="lockd"><h4>Locked</h4><ul><li>14 serving capacity.</li><li>Ships as tin plus pouch inside a secondary pack.</li><li>The secondary pack shows an image of the tin on its face, so the shopper sees the premium object they are buying.</li></ul></div>
+            <div class="yoursd" style="margin-top:12px"><h4>Yours</h4><ul><li>Tin colour, finish and lid.</li><li>Decoration on the tin.</li><li>The secondary pack structure and artwork, including how the tin image is treated.</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="parts"><span class="k">Pieces per unit</span><span class="part">Tin</span><span class="part">Refill pouch</span><span class="part">Secondary pack</span></div>
+  </article>
+
+  <article class="sheet" id="blister">
+    <div class="top">
+      <div class="pic">
+        <figure><img src="u/blister-open.jpg" alt="Open trifold with two blister panels, Week 1 and Week 2"><figcaption>Open: two panels, seven days each, two capsules per day.</figcaption></figure>
+        <div class="row2">
+          <figure><img src="u/blister-back.jpg" alt="Silver foil back of a blister panel"><figcaption>Foil back. Colour is locked.</figcaption></figure>
+          <figure><img src="u/sleeve.jpg" alt="Closed trifold cover"><figcaption>Closed trifold.</figcaption></figure>
+        </div>
+        <figure><img src="u/carton.jpg" alt="Outer carton for the blister trifold"><figcaption>Secondary carton. Structure reference only.</figcaption></figure>
+      </div>
+      <div class="txt">
+        <div class="num">FORMAT 04</div>
+        <div class="title"><h3>Blister trifold</h3><span class="pill">capsule</span><span class="pill retail">Retail</span></div>
+        <p class="sub">Retail option A. We are choosing between this and the travel tin, and only one will ship. The capsule shows through the window, so shell colour is part of the design. The only format whose serving count changes by product.</p>
+        <div class="cols">
+          <div>
+            <h4>The brief</h4>
+            <dl class="kv">
+              <dt>Substrate</dt><dd>Capsules, two per serving</dd>
+              <dt>Stasis</dt><dd><span class="n">14 day · 28 capsules</span></dd>
+              <dt>Thesis</dt><dd><span class="n">12 day · 24 capsules</span></dd>
+              <dt>Day + Night set</dt><dd><span class="n">7 day · 28 capsules</span>, 14 of each</dd>
+              <dt>Channel</dt><dd>Retail only</dd>
+              <dt>Products</dt><dd>Stasis Day, Stasis Night, Stasis Day + Night set, Thesis Clarity, Stress Reset, Neuroprotection, Motivation</dd>
+            </dl>
+          </div>
+          <div>
+            <h4>Capabilities</h4>
+            <ul>
+              <li>Clear blister, one capsule per cavity, foil backed.</li>
+              <li>Cavities can be grouped and labelled by day and week.</li>
+              <li>Cavity count flexes per SKU: 28 for Stasis, 24 for Thesis, 28 split two ways for the set. The card and trifold need to absorb all three.</li>
+              <li>Blister card mounts into a printed trifold with room for usage copy.</li>
+              <li>Lot and expiry print onto the foil per cavity.</li>
+              <li>Needs a secondary pack for shelf.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="lockd"><h4>Locked</h4><ul><li>Foil colour.</li><li>Two capsules per day. Counts of 14, 12 and 7 day by product.</li><li>Trifold outer plus secondary pack.</li></ul></div>
+            <div class="yoursd" style="margin-top:12px"><h4>Yours</h4><ul><li>Cavity layout and day labelling.</li><li>Trifold stock, panels and artwork.</li><li>Secondary pack structure and artwork.</li><li>Capsule shell colour per product.</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="parts"><span class="k">Pieces per unit</span><span class="part">Blister card</span><span class="part">Trifold</span><span class="part">Secondary pack</span></div>
+  </article>
+
+  <article class="sheet" id="pouch">
+    <div class="top">
+      <div class="pic">
+        <figure><img src="u/pouch.jpg" alt="White stand-up capsule pouch with tear notch"><figcaption>Structure reference. Ignore the labelling and count on this sample.</figcaption></figure>
+      </div>
+      <div class="txt">
+        <div class="num">FORMAT 05</div>
+        <div class="title"><h3>Refill pouch</h3><span class="pill">capsule</span><span class="pill lock">component</span></div>
+        <p class="sub">The DTC refill. It ships inside the refillable container on a first order, then sells on its own from the second order on. A smaller version is likely to go inside the retail travel tin. Never a retail shelf product by itself.</p>
+        <div class="cols">
+          <div>
+            <h4>The brief</h4>
+            <dl class="kv">
+              <dt>Substrate</dt><dd>Capsules, two per serving</dd>
+              <dt>DTC</dt><dd><span class="n">25 day</span>. Inside the refillable container on the first order, sold alone as the refill from the second order on</dd>
+              <dt>Retail</dt><dd>A smaller version, <span class="n">14 servings</span>, inside the travel tin. Likely, not yet final.</dd>
+              <dt>Products</dt><dd>One pouch per capsule product</dd>
+            </dl>
+          </div>
+          <div>
+            <h4>Capabilities</h4>
+            <ul>
+              <li>Flexible film, heat sealed, tear notch.</li>
+              <li>Full surface print, matte or gloss.</li>
+              <li>Can be sized to each fill so the pouch matches its vessel.</li>
+              <li>Must carry supplement facts when it is the only labelled piece in a refill shipment.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="lockd"><h4>Locked</h4><ul><li>Not a retail shelf product on its own.</li><li>The DTC refill SKU from the second order on, so it has to work as the only piece in the box.</li><li>Pairs with the refillable container.</li></ul></div>
+            <div class="yoursd" style="margin-top:12px"><h4>Yours</h4><ul><li>Pouch shape, size and finish within what fits each vessel.</li><li>Artwork.</li><li>Whether the retail version is a scaled copy of the DTC pouch or its own shape.</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="parts"><span class="k">Where it goes</span><span class="part">Inside the refillable container, first DTC order</span><span class="part">Alone, DTC refill orders</span><span class="part ref">Inside the travel tin, likely</span></div>
+  </article>
+</section>
+
+<section id="shells">
+  <div class="sechead"><h2>Capsule shell colour</h2><p>A design lever, not a manufacturing detail.</p></div>
+  <div class="shells">
+    <img src="u/shells.jpg" alt="Two sample trays of capsule shells in single colours, two tone and clear">
+    <div>
+      <p>These are the shell options available to us: single colour, two tone, and clear. The same shell shows through the blister window and sits loose in both tins, so one colour per product carries across all three capsule formats.</p>
+      <p>Suggested order of work: assign a shell colour to each capsule product first, then design the blister card, tin and container around it.</p>
+      <p><span class="pill yours">yours</span> Nothing about shell colour is locked.</p>
+    </div>
+  </div>
+</section>
+
+<section id="decided">
+  <div class="sechead"><h2>Already decided</h2><p>So nobody re-opens these.</p></div>
+  <ul class="dec">
+    <li><b>Gummies stay in plastic.</b>Tin was ruled out for gummies.</li>
+    <li><b>25 is DTC, 14 is retail.</b>For both substrates. The blister is the one exception: 14 day for Stasis, 12 day for Thesis, 7 day for the Day + Night set.</li>
+    <li><b>Every capsule product is two per serving.</b>So 25 day is 50 capsules, 14 day is 28 and 12 day is 24, in every capsule format.</li>
+    <li><b>The refillable container is DTC only.</b>Travel tin and blister are retail only, and it will be one or the other, not both.</li>
+    <li><b>The pouch is the DTC refill.</b>First order ships container plus pouch. From the second order on, the pouch sells alone. It never goes on a retail shelf by itself; a smaller version is likely inside the retail tin.</li>
+    <li><b>Blister foil colour is fixed.</b>Everything else on the blister unit is open.</li>
+  </ul>
+</section>
+
+<footer>Samples photographed 3 Nov 2026. Travel tin and blister samples are other brands' packs, used for structure only. The ten SKUs to design are on the <a href="sku-shortlist.html">SKU shortlist</a>.</footer>
+</div>
+</body>
+</html>

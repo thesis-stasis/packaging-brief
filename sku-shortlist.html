@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>SKU Shortlist</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a one-screen decision memo. The selection principle up top, the ten grouped by format with what each one teaches, then a coverage matrix. Partner copy. */
+:root{
+  --bg:#F4F5F2; --paper:#FFFFFF; --ink:#1A1D1B; --ink-2:#5A605C; --line:#D9DDD8;
+  --accent:#1F4FC4; --accent-soft:#E3E9FA;
+  --cut:#9A3B22; --cut-soft:#F8E3DC;
+  --keep:#1E6B3A; --keep-soft:#DDF0E3;
+  --display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15181A; --paper:#1E2224; --ink:#ECEEEA; --ink-2:#A3AAA6; --line:#343A3C;
+    --accent:#8AA6F2; --accent-soft:#25304A; --cut:#F0A58C; --cut-soft:#432219; --keep:#7FD39A; --keep-soft:#1D3626;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15181A; --paper:#1E2224; --ink:#ECEEEA; --ink-2:#A3AAA6; --line:#343A3C;
+  --accent:#8AA6F2; --accent-soft:#25304A; --cut:#F0A58C; --cut-soft:#432219; --keep:#7FD39A; --keep-soft:#1D3626;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
+  padding-block:0 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:980px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
+h1{font-size:clamp(34px,6vw,54px);font-weight:700;letter-spacing:-.01em}
+h2{font-size:26px;font-weight:700}
+h3{font-size:18px;font-weight:700}
+p{margin:0 0 10px;max-width:66ch}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.n{font-family:var(--mono);font-weight:500;font-variant-numeric:tabular-nums}
+header{padding-block:44px 24px}
+header .meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:12px;font-family:var(--mono);font-size:13px;color:var(--ink-2)}
+.context{margin-top:22px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.context h2{font-size:20px;margin-bottom:6px}
+.context p{max-width:none;font-size:15px;margin:0}
+.glance{margin-top:14px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+.glance h3{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);font-weight:500;margin-bottom:8px}
+.glance ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 18px;font-size:14px}
+.glance li b{font-family:var(--display);font-size:16px;display:block}
+.principle{margin-top:14px;border-left:4px solid var(--accent);background:var(--paper);padding:16px 20px;border-radius:0 10px 10px 0;max-width:none}
+.principle .q{font-family:var(--display);font-size:24px;line-height:1.2;font-weight:600;margin:0}
+.principle p{margin-top:8px;color:var(--ink-2);font-size:14px}
+.axes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.axes div{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0}
+.axes b{font-family:var(--display);font-size:17px;display:block}
+.axes span{font-size:13px;color:var(--ink-2)}
+section{padding-block:36px 0}
+.sechead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.sechead p{margin:0;color:var(--ink-2);font-size:14px}
+.group{margin-top:18px}
+.group h3{color:var(--ink-2);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;margin-bottom:8px}
+.sku{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 16px;display:grid;grid-template-columns:36px minmax(0,5fr) minmax(0,6fr);gap:6px 14px;align-items:start;margin-bottom:8px;min-width:0}
+.sku .i{font-family:var(--mono);color:var(--accent);font-weight:500;padding-top:2px}
+.sku .name b{font-family:var(--display);font-size:18px;display:block;line-height:1.15}
+.sku .name span{display:block;font-size:13px;color:var(--ink-2);margin-top:3px}
+.sku .why{font-size:14px;min-width:0}
+.sku .why em{font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);display:block;margin-bottom:2px}
+.sku.cut{border-color:var(--cut);background:var(--cut-soft)}
+.sku.cut .i{color:var(--cut)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:13px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+thead th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);font-weight:500;background:var(--bg)}
+tbody th{font-weight:600;white-space:nowrap;font-size:13px}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+td.y{font-family:var(--mono);color:var(--accent);text-align:center;font-weight:500}
+td.d{color:var(--line);text-align:center}
+tr.cutrow th,tr.cutrow td{color:var(--cut);background:var(--cut-soft)}
+tr.cutrow td.y{color:var(--cut)}
+tfoot td{font-family:var(--mono);font-size:12px;color:var(--ink-2);text-align:center;background:var(--bg)}
+tfoot td:first-child{text-align:left}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px 18px;min-width:0}
+.box h3{margin-bottom:6px}
+.box.cutbox{border-color:var(--cut)}
+.box ul{margin:8px 0 0;padding-left:18px;font-size:14px}
+.box li{margin-bottom:6px}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid currentColor;vertical-align:middle}
+.pill.cutp{color:var(--cut);background:var(--cut-soft)}
+.pill.keepp{color:var(--keep);background:var(--keep-soft)}
+.channel{margin-top:26px;border-left:6px solid var(--accent);padding-left:16px}
+.channel.retail{border-left-color:var(--keep)}
+.chanhead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.chanhead h3{font-size:32px;color:var(--accent)}
+.channel.retail .chanhead h3{color:var(--keep)}
+.chanhead p{margin:0;color:var(--ink-2);font-size:14px}
+.channel .group{margin-top:12px}
+.channel.dtc .sku .i{color:var(--accent)}
+.channel.retail .sku .i{color:var(--keep)}
+td.des{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:500}
+td.der{font-size:12px;color:var(--ink-2)}
+td.der b{font-family:var(--mono);font-weight:500;color:var(--cut);display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+td.des b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+td.na{color:var(--line);text-align:center}
+.gaps{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+.gaps div{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:14px}
+.gaps b{font-family:var(--display);font-size:16px;display:block;margin-bottom:2px}
+td.ch{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;font-weight:500}
+td.ch.dtc{color:var(--accent)} td.ch.retail{color:var(--keep)}
+footer{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+@media (max-width:760px){
+  .axes{grid-template-columns:1fr}
+  .glance ul{grid-template-columns:1fr}
+  .sku{grid-template-columns:36px minmax(0,1fr)}
+  .sku .why{grid-column:2}
+  .two{grid-template-columns:1fr}
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.site{display:flex;flex-wrap:wrap;gap:6px 20px;padding-top:18px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.site a{color:var(--ink-2);text-decoration:none;padding-bottom:2px;border-bottom:2px solid transparent}
+.site a:hover{color:var(--ink)}
+.site a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Stasis &amp; Thesis · Retail packaging · The ten SKUs</div>
+  <h1>SKU Shortlist</h1>
+  <div class="meta"><span>Owner: Molly</span><span>Updated 4 Nov 2026</span><span>Ten SKUs to final direction</span></div>
+
+  <div class="context">
+    <h2>The situation in one paragraph</h2>
+    <p>Stasis and Thesis are two supplement brands from the same company. Adults take capsules. Kids take gummies. Both brands are moving from online only into retail stores, which means new packaging. Dayjob is taking ten SKUs through to final design. A SKU is one product in one pack, for example Stasis Day in a blister pack. Ten is not enough to design every pack we sell, so the ten have to be chosen to establish the rules that let the rest of the range be designed later without starting over. This page is the ten and the reasoning behind them.</p>
+  </div>
+
+  <div class="principle">
+    <p class="q">The goal is to leverage Dayjob's design skills across enough SKUs to build out a complete packaging system, not ten individual packs.</p>
+    <p>So these ten are selected to give Dayjob the most complete understanding of that system across three dimensions: format, variant logic, and system rules. The test for each SKU is not commercial priority. It is what the SKU teaches the agency that no other SKU on the list does, so the rest of the range can be designed from the system without a second engagement.</p>
+  </div>
+  <div class="axes">
+    <div><b>Format</b><span>The physical pack a product comes in. A gummy jar in two sizes, a refillable metal container for home, and for retail capsules one of two options still being decided: a small travel tin with a pouch, or a blister pack in a folded card. The ten include both retail options so the choice is made with designs in hand, not before.</span></div>
+    <div><b>Variant logic</b><span>How packs for related products relate to each other. The same product in two different packs. Two products in the same pack. A Day version next to a Night version. A set of two instead of one. A shorter pack next to a longer one.</span></div>
+    <div><b>System rules</b><span>The rules that let the agency design the rest of the range later. How Stasis and Thesis look related but distinct. How Kids relates to adult. How the outer box carries the shelf face whichever retail option wins.</span></div>
+  </div>
+
+  <div class="glance">
+    <h3>Products that need to be in this design system</h3>
+    <ul>
+      <li><b>Stasis Day, Stasis Night</b> Adult capsules. Taken with stimulant medication, one in the morning, one at night. Sold singly and as a set. Both on the ten.</li>
+      <li><b>Stasis Kids Day, Stasis Kids Night, Thesis Kids Steady Focus</b> Gummies for children. Kids Day is on the ten in the 25 serving DTC jar and Kids Night in the 14 serving retail jar, so the pair and both sizes get drawn. Thesis Kids Steady Focus follows the Stasis Kids jar once that is set.</li>
+      <li><b>Thesis Clarity, Stress Reset, Neuroprotection, Motivation</b> Adult capsules under the Thesis brand. Clarity and Stress Reset are on the ten. Neuroprotection and Motivation follow the same rules once those two are set.</li>
+    </ul>
+  </div>
+</header>
+
+<section>
+  <div class="sechead"><h2>The ten</h2><p>Grouped by pack type. The middle column says what the SKU is. The right column says what it teaches the agency.</p></div>
+
+  <div class="channel dtc"><div class="chanhead"><h3>DTC</h3><p>Sold on our own site. The 25 day sizes.</p></div>
+  <div class="group"><h3>Refillable container</h3>
+    <div class="sku"><div class="i">01</div><div class="name"><b>Stasis Day, refillable container</b><span>Container + pouch + secondary · 25 day</span></div><div class="why"><em>Teaches</em>The premium online unit from the ground up. The customer keeps the container and refills it from a pouch, so the agency designs the container, the pouch, and how the two unbox together.</div></div>
+    <div class="sku"><div class="i">02</div><div class="name"><b>Thesis Clarity, refillable container</b><span>Container + pouch + secondary · 25 day</span></div><div class="why"><em>Teaches</em>The Stasis to Thesis translation on the same format. Clarity is used here so one Thesis product runs through all three capsule formats.</div></div>
+  </div>
+
+  <div class="group"><h3>Gummy jar</h3>
+    <div class="sku"><div class="i">03</div><div class="name"><b>Stasis Kids Day, gummy jar</b><span>Plastic jar · 25 serving</span></div><div class="why"><em>Teaches</em>The Kids system next to adult Stasis, and the only gummy format at its DTC size.</div></div>
+  </div>
+
+  </div>
+
+  <div class="channel retail"><div class="chanhead"><h3>Retail</h3><p>Sold in stores. The 14 serving sizes, plus 12 and 7 day on the blister.</p></div>
+  <div class="group"><h3>Gummy jar</h3>
+    <div class="sku"><div class="i">04</div><div class="name"><b>Stasis Kids Night, small gummy jar</b><span>Plastic jar · 14 serving</span></div><div class="why"><em>Teaches</em>Day and Night paired on a gummy jar for a parent, and the jar at retail size: how it scales down and what the retail face needs that the DTC jar doesn't.</div></div>
+  </div>
+
+  <div class="group"><h3>Option A · blister trifold</h3>
+    <div class="sku"><div class="i">05</div><div class="name"><b>Stasis Day, blister</b><span>Blister in paper trifold + secondary · 14 day</span></div><div class="why"><em>Teaches</em>Retail option A. Also the same product as 01, so it shows one product moving from DTC format to retail format.</div></div>
+    <div class="sku"><div class="i">06</div><div class="name"><b>Stasis Night, blister</b><span>Blister in paper trifold + secondary · 14 day</span></div><div class="why"><em>Teaches</em>Day beside Night on shelf. The pairing rule: same system, instantly told apart.</div></div>
+    <div class="sku"><div class="i">07</div><div class="name"><b>Stasis Day + Night set, blister</b><span>Blister in paper trifold + secondary · 7 day</span></div><div class="why"><em>Teaches</em>A set versus a single. Two products in one trifold, a shorter serving, and how the secondary signals "both" without a new system.</div></div>
+    <div class="sku"><div class="i">08</div><div class="name"><b>Thesis Clarity, blister</b><span>Blister in paper trifold + secondary · 12 day</span></div><div class="why"><em>Teaches</em>Thesis on the retail blister, and a 12 day count against the Stasis 14. Same format, different cavity count.</div></div>
+    <div class="sku"><div class="i">09</div><div class="name"><b>Thesis Stress Reset, blister</b><span>Blister in paper trifold + secondary · 12 day</span></div><div class="why"><em>Teaches</em>Two Thesis products side by side. This is the rule that scales furthest, because the Thesis capsule range is the longest line we have.</div></div>
+  </div>
+
+  <div class="group"><h3>Option B · travel tin + pouch</h3>
+    <div class="sku"><div class="i">10</div><div class="name"><b>Thesis Clarity, travel tin</b><span>Tin + pouch + secondary · 14 serving</span></div><div class="why"><em>Teaches</em>Retail option B, the alternative to the blister. Same product as 08, so the two retail options can be compared on one product, side by side, before we choose.</div></div>
+  </div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><h2>Coverage</h2><p>Each column is one thing the agency needs to learn. Each dot is a SKU that teaches it. Every column has at least one dot.</p></div>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>SKU</th><th>Channel</th><th>First time we see this pack</th><th>Stasis next to Thesis</th><th>Same product, different pack</th><th>Two products side by side</th><th>A set, or a different count</th><th>Kids next to adult</th><th>Retail A vs B comparison</th></tr></thead>
+    <tbody>
+      <tr><th>01 Stasis Day container</th><td class="ch dtc">DTC</td><td class="y">●</td><td class="y">●</td><td class="y">●</td><td class="d">—</td><td class="d">—</td><td class="d">—</td><td class="d">—</td></tr>
+      <tr><th>02 Thesis Clarity container</th><td class="ch dtc">DTC</td><td class="d">—</td><td class="y">●</td><td class="y">●</td><td class="d">—</td><td class="d">—</td><td class="d">—</td><td class="d">—</td></tr>
+      <tr><th>03 Stasis Kids Day jar 25</th><td class="ch dtc">DTC</td><td class="y">●</td><td class="d">—</td><td class="y">●</td><td class="d">—</td><td class="d">—</td><td class="y">●</td><td class="d">—</td></tr>
+      <tr><th>04 Stasis Kids Night jar 14</th><td class="ch retail">Retail</td><td class="y">●</td><td class="d">—</td><td class="d">—</td><td class="y">●</td><td class="y">●</td><td class="y">●</td><td class="d">—</td></tr>
+      <tr><th>05 Stasis Day blister</th><td class="ch retail">Retail</td><td class="y">●</td><td class="y">●</td><td class="y">●</td><td class="y">●</td><td class="d">—</td><td class="d">—</td><td class="d">—</td></tr>
+      <tr><th>06 Stasis Night blister</th><td class="ch retail">Retail</td><td class="d">—</td><td class="d">—</td><td class="d">—</td><td class="y">●</td><td class="d">—</td><td class="d">—</td><td class="d">—</td></tr>
+      <tr><th>07 Day + Night set blister</th><td class="ch retail">Retail</td><td class="d">—</td><td class="d">—</td><td class="d">—</td><td class="y">●</td><td class="y">●</td><td class="d">—</td><td class="d">—</td></tr>
+      <tr><th>08 Thesis Clarity blister</th><td class="ch retail">Retail</td><td class="d">—</td><td class="y">●</td><td class="y">●</td><td class="y">●</td><td class="y">●</td><td class="d">—</td><td class="y">●</td></tr>
+      <tr><th>09 Thesis Stress Reset blister</th><td class="ch retail">Retail</td><td class="d">—</td><td class="d">—</td><td class="d">—</td><td class="y">●</td><td class="d">—</td><td class="d">—</td><td class="d">—</td></tr>
+      <tr><th>10 Thesis Clarity tin</th><td class="ch retail">Retail</td><td class="y">●</td><td class="d">—</td><td class="y">●</td><td class="d">—</td><td class="d">—</td><td class="d">—</td><td class="y">●</td></tr>
+    </tbody>
+    <tfoot><tr><td>Covered</td><td>both</td><td>5 of 5</td><td>yes, ×2</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td></tr></tfoot>
+  </table>
+  </div>
+
+  <h3 style="margin-top:30px;margin-bottom:4px">Product coverage</h3>
+  <p style="color:var(--ink-2);font-size:14px;margin-bottom:12px">Every product in the system, by channel. "Designed" means Dayjob draws it as one of the ten. "Derived" means nobody draws it during the engagement: we apply a rule the ten established, after handoff. Derived is the point of the exercise: each derived cell rests on a rule that one of the ten establishes.</p>
+  <div class="tablewrap">
+  <table style="min-width:640px">
+    <thead><tr><th>Product</th><th>DTC</th><th>Retail</th></tr></thead>
+    <tbody>
+      <tr><th>Stasis Day</th><td class="des"><b>Designed</b>01 refillable container</td><td class="des"><b>Designed</b>05 blister</td></tr>
+      <tr><th>Stasis Night</th><td class="der"><b>Derived</b>01 Day container + the Day/Night pairing rule from 05 and 06</td><td class="des"><b>Designed</b>06 blister</td></tr>
+      <tr><th>Stasis Day + Night set</th><td class="na">not a DTC format</td><td class="des"><b>Designed</b>07 blister, 7 day</td></tr>
+      <tr><th>Stasis Kids Day</th><td class="des"><b>Designed</b>03 jar, 25 serving</td><td class="der"><b>Derived</b>04 Kids Night jar at 14 + the Day/Night pairing from 03 and 04. Same product, smaller jar.</td></tr>
+      <tr><th>Stasis Kids Night</th><td class="der"><b>Derived</b>03 Kids Day jar at 25 + the Day/Night pairing from 03 and 04. Same product, bigger jar.</td><td class="des"><b>Designed</b>04 jar, 14 serving</td></tr>
+      <tr><th>Thesis Clarity</th><td class="des"><b>Designed</b>02 refillable container</td><td class="des"><b>Designed</b>08 blister · 10 travel tin</td></tr>
+      <tr><th>Thesis Stress Reset</th><td class="der"><b>Derived</b>02 Clarity container + the Thesis sibling rule from 08 and 09</td><td class="des"><b>Designed</b>09 blister</td></tr>
+      <tr><th>Thesis Neuroprotection</th><td class="der"><b>Derived</b>02 Clarity container + the sibling rule</td><td class="der"><b>Derived</b>08 and 09 + the sibling rule</td></tr>
+      <tr><th>Thesis Motivation</th><td class="der"><b>Derived</b>02 Clarity container + the sibling rule</td><td class="der"><b>Derived</b>08 and 09 + the sibling rule</td></tr>
+      <tr><th>Thesis Kids Steady Focus</th><td class="der"><b>Derived</b>03 Stasis Kids jar + the Stasis to Thesis rule from 01 and 02.</td><td class="der"><b>Derived</b>04 Stasis Kids jar + the Stasis to Thesis rule</td></tr>
+    </tbody>
+    <tfoot><tr><td>Designed directly</td><td>4 of 9 cells</td><td>6 of 10 cells</td></tr></tfoot>
+  </table>
+  </div>
+</section>
+
+<footer>Formats, channels and what is locked are on the <a href="format-map.html">Retail Format Map</a>. This page is the SKU selection only.</footer>
+</div>
+</body>
+</html>
